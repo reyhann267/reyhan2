@@ -1,5 +1,5 @@
 ﻿proxies:
-  - name: yann edu
+  - name: yannxml edu
     type: vless
     server: 104.17.3.81
     port: 443
@@ -17,7 +17,7 @@
       path: /vless
       headers: 
         Host: id1.servercepat.net
-  - name: yann Conference
+  - name: yannxml Conference
     type: vless
     server: support.zoom.us
     port: 443
@@ -35,5 +35,6 @@
       path: /vless
       headers: 
         Host: id1.servercepat.net
+
 
 
