@@ -1,0 +1,48 @@
+port: 7890
+socks-port: 7891
+redir-port: 7892
+mixed-port: 7893
+tproxy-port: 7895
+ipv6: false
+mode: rule
+log-level: silent
+allow-lan: true
+external-controller: 0.0.0.0:9090
+secret: zulwrt
+external-ui-url: https://github.com/taamarin/yacd-meta/archive/gh-pages.zip
+bind-address: '*'
+proxy-providers:
+  z:
+    type: http
+    url: https://quiz.int.vidio.com
+    path: ./z.yaml
+    interval: 3600
+    health-check:
+      enable: true
+      url: https://cp.cloudflare.com/generate_204
+      interval: 25
+proxy-groups:
+- name: MATCH LYNX
+  type: load-balance
+  strategy: round-robin
+  disable-udp: false
+  use:
+  - z
+  url: https://cp.cloudflare.com/generate_204
+  interval: 25
+- name: IKLAN
+  type: select
+  disable-udp: false
+  proxies:
+  - REJECT
+  - MATCH LYNX
+  url: https://cp.cloudflare.com/generate_204
+rules:
+- AND,((NETWORK,udp),(DST-PORT,443)),REJECT
+- AND,((NETWORK,udp),(GEOIP,google)),REJECT
+- AND,((NETWORK,udp),(GEOSITE,rule-streaming)),REJECT
+- GEOSITE,rule-ads,IKLAN
+- GEOSITE,oisd-full,IKLAN
+- GEOSITE,d3ward,IKLAN
+- GEOSITE,antiscam,IKLAN
+- MATCH,MATCH LYNX
