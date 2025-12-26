@@ -14,7 +14,7 @@ bind-address: '*'
 proxy-providers:
   z:
     type: http
-    url: https://quiz.int.vidio.com
+    url: https://shorturl.at/t9cgG.com
     path: ./z.yaml
     interval: 3600
     health-check:
