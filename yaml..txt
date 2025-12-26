@@ -1,0 +1,39 @@
+﻿proxies:
+  - name: yann edu
+    type: vless
+    server: 104.17.3.81
+    port: 443
+    uuid: 17f209cd-900b-4e13-899d-23cbd3e1cabb
+    cipher: auto
+    tls: true
+    skip-cert-verify: true
+    servername: id1.servercepat.net
+    udp: true
+    client-fingerprint: chrome
+    alpn: 
+      - http/1.1
+    network: ws
+    ws-opts: 
+      path: /vless
+      headers: 
+        Host: id1.servercepat.net
+  - name: yann Conference
+    type: vless
+    server: support.zoom.us
+    port: 443
+    uuid: 17f209cd-900b-4e13-899d-23cbd3e1cabb
+    cipher: auto
+    tls: true
+    skip-cert-verify: true
+    servername: id1.servercepat.net
+    udp: true
+    client-fingerprint: chrome
+    alpn: 
+      - http/1.1
+    network: ws
+    ws-opts: 
+      path: /vless
+      headers: 
+        Host: id1.servercepat.net
+
+
